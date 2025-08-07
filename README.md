@@ -24,18 +24,34 @@
       padding: 1rem;
       border-radius: 12px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      z-index: 999;
+      z-index: 1000;
       max-width: 320px;
-      top: 100%;
+      width: 320px;
+      border: 1px solid #e2e8f0;
+      pointer-events: none;
       left: 50%;
       transform: translateX(-50%);
+      top: 100%;
       margin-top: 8px;
-      border: 1px solid #e2e8f0;
     }
+    
     .service-box:hover .service-details {
       display: block;
       animation: fadeInUp 0.3s ease-out;
     }
+    
+    /* Check if popup would go off-screen and adjust position */
+    .service-details.adjust-left {
+      left: 0;
+      transform: none;
+    }
+    
+    .service-details.adjust-right {
+      left: auto;
+      right: 0;
+      transform: none;
+    }
+    
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -46,6 +62,7 @@
         transform: translateX(-50%) translateY(0);
       }
     }
+    
     .portfolio-container {
       display: flex;
       overflow-x: auto;
@@ -118,6 +135,7 @@
         display: none;
         margin-top: 0.5rem;
         max-width: none;
+        width: auto;
         transform: none;
         left: auto;
       }
@@ -198,7 +216,6 @@
         <a href="tel:347-276-3160" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center">
           <span class="mr-2">📞</span> Call Now: 347-276-3160
         </a>
-        <a href="#contact" class="bg-yellow-500 hover:bg-yellow-400 text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg transition-colors" data-en="Get Free Quote" data-ru="Получить Бесплатную Оценку">Get Free Quote</a>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -252,10 +269,10 @@
   </section>
 
   <!-- Services Section -->
-  <section id="services" class="bg-white py-16 lg:py-24">
+  <section id="services" class="bg-white py-16 lg:py-24 relative overflow-visible">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl lg:text-4xl font-bold text-center mb-12" data-en="Our Services" data-ru="Наши Услуги">Our Services</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto" style="padding-bottom: 200px;">
         <!-- Emergency Plumbing -->
         <div class="service-box bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-md text-center relative cursor-pointer" onclick="toggleServiceDetails(this)">
           <div class="text-3xl mb-3">🚨</div>
@@ -389,6 +406,36 @@
             </ul>
           </div>
         </div>
+
+        <!-- Filtration & Water Quality -->
+        <div class="service-box bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 rounded-xl shadow-md text-center relative cursor-pointer" onclick="toggleServiceDetails(this)">
+          <div class="text-3xl mb-3">💧</div>
+          <h3 class="text-lg font-semibold mb-2" data-en="Filtration & Water Quality" data-ru="Фильтрация и Качество Воды">Filtration & Water Quality</h3>
+          <p class="text-sm text-gray-600 mb-2" data-en="Clean water solutions" data-ru="Решения для чистой воды">Clean water solutions</p>
+          <div class="service-details">
+            <ul class="text-left text-sm space-y-1">
+              <li>• Water Filtration Systems</li>
+              <li>• Water Softener Installations</li>
+              <li>• Lead Pipe Replacement</li>
+              <li>• Reverse Osmosis Systems</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- General Installation & Plumbing Renovations -->
+        <div class="service-box bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl shadow-md text-center relative cursor-pointer" onclick="toggleServiceDetails(this)">
+          <div class="text-3xl mb-3">🏠</div>
+          <h3 class="text-lg font-semibold mb-2" data-en="General Installation & Plumbing Renovations" data-ru="Общие Установки и Реконструкции Сантехники">General Installation & Plumbing Renovations</h3>
+          <p class="text-sm text-gray-600 mb-2" data-en="Complete renovation services" data-ru="Полные услуги реконструкции">Complete renovation services</p>
+          <div class="service-details">
+            <ul class="text-left text-sm space-y-1">
+              <li>• New Construction Plumbing</li>
+              <li>• Whole-Home Repiping</li>
+              <li>• Plumbing Inspections (Pre-Purchase)</li>
+              <li>• Permitting & Code Compliance</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -397,7 +444,7 @@
   <section id="portfolio" class="py-16 lg:py-24 bg-gray-50">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl lg:text-4xl font-bold text-center mb-8" data-en="Our Portfolio" data-ru="Наш Портфель">Our Portfolio</h2>
-      <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-600" data-en="Explore a selection of our completed projects showcasing the quality and expertise of Prestige Rooter. View examples of our work, from residential repairs to commercial installations." data-ru="Изучите подборку наших завершенных проектов, демонстрирующих качество и профессионализм Prestige Rooter. Посмотрите примеры нашей работы, от ремонта в жилых домах до коммерческих установок.">Explore a selection of our completed projects showcasing the quality and expertise of Prestige Rooter. View examples of our work, from residential repairs to commercial installations.</p>
+      <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-600" data-en="Explore some completed residential/commercial projects showcasing our quality and expertise." data-ru="Изучите подборку наших завершенных проектов, демонстрирующих качество и профессионализм Prestige Rooter. Посмотрите примеры нашей работы, от ремонта в жилых домах до коммерческих установок.">Explore some of our completed residential/commercial projects showcasing Prestige Rooter's quality and expertise.</p>
       <div class="portfolio-container">
         <img src="portfolio1.jpg" alt="Portfolio 1" class="portfolio-slide">
         <img src="portfolio2.jpg" alt="Portfolio 2" class="portfolio-slide">
@@ -677,7 +724,7 @@
               <img src="logo-transparent.png" alt="Prestige Rooter" class="w-8 h-8 object-contain">
             </div>
             <div>
-              <h3 class="text-xl font-bold">Prestige Rooter</h3>
+              <h3 class="text-xl font-bold">Prestige Rooter Inc.</h3>
               <p class="text-sm text-gray-400">Since 2005</p>
             </div>
           </div>
@@ -741,7 +788,30 @@
       mobileMenu.classList.remove('active');
     }
 
-    // Service details toggle for mobile
+    // Service hover functionality - simplified and fixed
+    document.querySelectorAll('.service-box').forEach(serviceBox => {
+      serviceBox.addEventListener('mouseenter', function(e) {
+        const serviceDetails = this.querySelector('.service-details');
+        if (serviceDetails && window.innerWidth > 768) {
+          // Check if popup would go off screen and adjust position
+          const rect = this.getBoundingClientRect();
+          const popupWidth = 320;
+          const windowWidth = window.innerWidth;
+          
+          serviceDetails.classList.remove('adjust-left', 'adjust-right');
+          
+          // If popup would go off right edge
+          if (rect.left + popupWidth/2 > windowWidth - 20) {
+            serviceDetails.classList.add('adjust-right');
+          }
+          // If popup would go off left edge  
+          else if (rect.left - popupWidth/2 < 20) {
+            serviceDetails.classList.add('adjust-left');
+          }
+        }
+      });
+    });
+
     function toggleServiceDetails(element) {
       if (window.innerWidth <= 768) {
         element.classList.toggle('active');
