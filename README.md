@@ -51,6 +51,8 @@
       display: none; /* Chrome, Safari, Edge */
     }
   </style>
+
+  <link rel="stylesheet" href="docs/assets/style.scss">
 </head>
 <body class="font-sans text-gray-800 bg-gray-100" id="body">
   <!-- Header -->
